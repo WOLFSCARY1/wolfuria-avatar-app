@@ -1,68 +1,22 @@
-/* Базовая стилизация */
-body {
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  background-color: #1e1e2f;
-  color: #fff;
-  margin: 0;
-  padding: 20px;
+// Индексы для смены слоев
+let hairIndex = 1;
+let clothesIndex = 1;
+
+// Сменить волосы
+function changeHair() {
+  hairIndex++;
+  if (hairIndex > 3) hairIndex = 1; // допустим 3 варианта
+  document.getElementById("hair").src = `assets/hair${hairIndex}.png`;
 }
 
-h1 {
-  color: #ffcc00;
+// Сменить одежду
+function changeClothes() {
+  clothesIndex++;
+  if (clothesIndex > 3) clothesIndex = 1; // допустим 3 варианта
+  document.getElementById("clothes").src = `assets/clothes${clothesIndex}.png`;
 }
 
-p {
-  font-size: 16px;
-  margin-bottom: 20px;
-}
-
-/* Контейнер аватара */
-#avatar-container {
-  position: relative;
-  width: 70%;
-  max-width: 250px;
-  margin: auto;
-}
-
-#avatar-container img {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
-/* Кнопки */
-.controls {
-  margin-top: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-button {
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #ffcc00;
-  color: #1e1e2f;
-  transition: background 0.3s;
-}
-
-button:hover {
-  background-color: #ffaa00;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 480px) {
-  #avatar-container {
-    width: 90%;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 10px;
-  }
+// Сохранение аватара (пока заглушка)
+function saveAvatar() {
+  alert("💾 Аватар WOLFURIA сохранён! В дальнейшем его можно связать с ботом.");
 }
