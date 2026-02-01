@@ -1,17 +1,41 @@
-let gender='male', hairIndex=1, clothesIndex=1, skinColor='#FAD7B5', background='forest';
+let gender = "male";
+let hair = 1, clothes = 1, pants = 1;
 
-function setGender(g){gender=g; hairIndex=1; clothesIndex=1;
- if(g==='male'){document.getElementById('body').src='assets/body_male.png'; document.getElementById('hair').src='assets/hair1.png'; document.getElementById('clothes').src='assets/clothes1.png';} 
- else {document.getElementById('body').src='assets/body_female.png'; document.getElementById('hair').src='assets/hair1_f.png'; document.getElementById('clothes').src='assets/clothes1_f.png';} 
- document.getElementById('body').style.backgroundColor=skinColor;
+const body = document.getElementById("body");
+const hairImg = document.getElementById("hair");
+const clothesImg = document.getElementById("clothes");
+const pantsImg = document.getElementById("pants");
+const bg = document.getElementById("bg");
+
+function update() {
+  body.src = `assets/body_${gender}.png`;
+  hairImg.src = `assets/hair${hair}${gender==="female"?"_f":""}.png`;
+  clothesImg.src = `assets/clothes${clothes}${gender==="female"?"_f":""}.png`;
+  pantsImg.src = `assets/pants${pants}${gender==="female"?"_f":""}.png`;
+  bg.src = `assets/forest.png`;
 }
 
-function changeHair(){hairIndex++; if(gender==='male'){if(hairIndex>3)hairIndex=1; document.getElementById('hair').src=`assets/hair${hairIndex}.png`; } 
-else {if(hairIndex>3)hairIndex=1; document.getElementById('hair').src=`assets/hair${hairIndex}_f.png`; } }
+document.getElementById("gender").onchange = e => {
+  gender = e.target.value;
+  update();
+};
 
-function changeClothes(){clothesIndex++; if(gender==='male'){if(clothesIndex>3)clothesIndex=1; document.getElementById('clothes').src=`assets/clothes${clothesIndex}.png`; } 
-else {if(clothesIndex>3)clothesIndex=1; document.getElementById('clothes').src=`assets/clothes${clothesIndex}_f.png`; } }
+function nextHair(){ hair = hair%3+1; update(); }
+function prevHair(){ hair = hair-1||3; update(); }
 
-function changeSkin(c){skinColor=c; document.getElementById('body').style.backgroundColor=skinColor;}
-function changeBackground(bg){background=bg; document.getElementById('background').src=`assets/${bg}.png`;}
-function saveAvatar(){alert("💾 Аватар WOLFURIA сохранён!");}
+function nextClothes(){ clothes = clothes%3+1; update(); }
+function prevClothes(){ clothes = clothes-1||3; update(); }
+
+function nextPants(){ pants = pants%3+1; update(); }
+function prevPants(){ pants = pants-1||3; update(); }
+
+function setHairColor(c){ hairImg.style.filter = `drop-shadow(0 0 0 ${c})`; }
+function setSkinColor(c){ body.style.filter = `drop-shadow(0 0 0 ${c})`; }
+function setClothesColor(c){ clothesImg.style.filter = `drop-shadow(0 0 0 ${c})`; }
+function setPantsColor(c){ pantsImg.style.filter = `drop-shadow(0 0 0 ${c})`; }
+
+function setBg(name){
+  bg.src = `assets/${name}.png`;
+}
+
+update();
