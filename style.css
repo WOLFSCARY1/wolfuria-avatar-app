@@ -1,18 +1,37 @@
-body { font-family: Arial; text-align:center; background:#1e1e2f; color:#fff; margin:0; padding:20px; }
-h1 { color:#ffcc00; }
-p { font-size:16px; margin-bottom:20px; }
-#avatar-container { position:relative; width:70%; max-width:250px; margin:auto; }
-#avatar-container img { position:absolute; width:100%; top:0; left:0; }
-.gender-selection, .background-selection { display:flex; justify-content:center; gap:10px; margin:10px auto; }
-.gender-selection button, .background-selection button { padding:10px 15px; border:none; border-radius:8px; cursor:pointer; transition:0.3s; }
-.gender-selection button { background:#00ccff; color:#1e1e2f; }
-.gender-selection button:hover { background:#00aaff; }
-.background-selection button { background:#22aa88; color:#fff; }
-.background-selection button:hover { background:#009977; }
-.skin-palette { margin:20px auto; display:flex; justify-content:center; gap:10px; }
-.color { width:40px; height:40px; border-radius:50%; cursor:pointer; border:2px solid #fff; transition:0.2s; }
-.color:hover { transform:scale(1.2); }
-.controls { margin-top:200px; display:flex; flex-direction:column; gap:10px; }
-button { padding:12px; font-size:16px; border:none; border-radius:8px; cursor:pointer; background:#ffcc00; color:#1e1e2f; transition:0.3s; }
-button:hover { background:#ffaa00; }
-@media(max-width:480px) { #avatar-container { width:90%; } button { font-size:14px; padding:10px; } }
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#avatar {
+  position: relative;
+  width: 256px;
+  height: 256px;
+  margin: 16px;
+}
+
+#avatar img {
+  position: absolute;
+  width: 256px;
+  height: 256px;
+}
+
+#controls {
+  width: 100%;
+  max-width: 360px;
+  padding: 10px;
+}
+
+button, select, input {
+  margin: 4px;
+  padding: 6px;
+  font-size: 16px;
+}
